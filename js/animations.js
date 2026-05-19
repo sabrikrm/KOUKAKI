@@ -1,21 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Animation titres
   const titles = document.querySelectorAll("h2, h3");
 
   const observer = new IntersectionObserver(function (entries) {
+
     entries.forEach(function (entry) {
+
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
       }
+
     });
+
+  }, {
+    threshold: 0.3
   });
 
   titles.forEach(function (title) {
-    title.classList.add("animate-title");
-    observer.observe(title);
-  });
 
+    title.classList.add("animate-title");
+
+    observer.observe(title);
+
+  });
 
   // Parallaxe hero
   const bannerVideo = document.querySelector(".banner__video");
@@ -54,6 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
        
     },
 });
+
+
+console.log('swiper actif')
 
 
 

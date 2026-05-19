@@ -28,6 +28,8 @@ get_header();
                 <div>
                     <h3>Le Lieu</h3>
                     <p><?php echo get_theme_mod('place'); ?></p>
+                    <img class="bigCloud" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/big_cloud.png" alt="grand nuage">
+<img class="littleCloud" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/little_cloud.png" alt="petit nuage">
                 </div>
 
             </article>
