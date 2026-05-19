@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // Animation titres
-  const titles = document.querySelectorAll("h2");
+  const titles = document.querySelectorAll("h2, h3");
 
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -25,27 +25,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollPosition = window.scrollY;
 
     if (bannerVideo && bannerLogoWrapper) {
-      bannerVideo.style.transform = `translateY(${scrollPosition * 0.1}px)`;
-      bannerLogoWrapper.style.transform = `translateY(${scrollPosition * 0.25}px)`;
+      bannerVideo.style.transform = `translateY(${scrollPosition * 0.15}px)`;
+      bannerLogoWrapper.style.transform = `translateY(${scrollPosition * 0.5}px)`;
     }
   });
 
 
   // SWIPER
-  const charactersSwiper = new Swiper(".characters__slider", {
-    effect: "coverflow",
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView : 3,
+    
+    loop: true,
+    autoplay: {  
+        delay: 1500,
+         disableOnInteraction: false,
+          
+         
+    },
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: "auto",
-    loop: true,
-
+    effect: 'coverflow',
     coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: false,
+         rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
+       
     },
-  });
+});
+
+
 
 });

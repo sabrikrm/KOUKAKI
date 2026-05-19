@@ -88,7 +88,7 @@ Version: 0.1
 .oscars__title {
   font-size: 32px;
   color: white;
-  background: orange;
+  background-image: url("assets/images/oscar_orange_bg.png");
   padding: 50px;
   border-radius: 20px;
   margin: 0;
@@ -102,7 +102,6 @@ Version: 0.1
 /* video hero */
 .banner {
   position: relative;
-  min-height: 806px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -123,12 +122,15 @@ Version: 0.1
   position: relative;
   z-index: 2;
 }
-.banner__logo {
-  display: block;
-  max-width: 700px;
-  width: 80%;
+
+.banner .banner__logo {
+  width: 100%;
+  max-width: 100%;
   height: auto;
+  margin-top: 0;
+  display: block;
   animation: floatTitle 3s ease-in-out infinite;
+  top: 15px;
 }
 
 @keyframes floatTitle {
@@ -152,6 +154,20 @@ Version: 0.1
   .banner__logo {
     width: 80%;
   }
+}
+.story #characters {
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+}
+.story #characters div {
+  flex: none;
+}
+
+#characters h3 {
+  text-align: left;
+  background-position: left;
+  padding: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */
