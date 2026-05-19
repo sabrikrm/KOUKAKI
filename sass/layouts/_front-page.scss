@@ -49,6 +49,20 @@
   transform-origin: center;
 }
 
+.story h2::before {
+   
+    left: -470px;
+    
+}
+
+
+.story h2::after {
+   
+    left: -440px;
+    
+}
+
+
 @keyframes rotateFlower {
   from {
     transform: rotate(0deg);
