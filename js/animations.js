@@ -1,10 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-  // Parallaxe hero
+document.addEventListener("DOMContentLoaded", () => {
+  /*
+   * Parallaxe Hero
+   */
   const bannerVideo = document.querySelector(".banner__video");
   const bannerLogoWrapper = document.querySelector(".banner__logo-wrapper");
 
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
 
     if (bannerVideo && bannerLogoWrapper) {
@@ -13,49 +14,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-
-  // SWIPER
-  const swiper = new Swiper('.swiper-container', {
-    slidesPerView : 3,
-    
-    loop: true,
-    autoplay: {  
+  /*
+   * Swiper personnagesss
+   */
+  if (document.querySelector(".swiper-container")) {
+    new Swiper(".swiper-container", {
+      slidesPerView: 3,
+      loop: true,
+      autoplay: {
         delay: 1500,
-         disableOnInteraction: false,
-          
-         
-    },
-    grabCursor: true,
-    centeredSlides: true,
-    effect: 'coverflow',
-    coverflowEffect: {
-         rotate: 50,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: false,
-       
-    },
-});
+        disableOnInteraction: false,
+      },
+      grabCursor: true,
+      centeredSlides: true,
+      effect: "coverflow",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  }
 
+  /*
+   * Nuages section lieu
+   */
+  /* ==========================
+   NUAGES SECTION LIEU
+========================== */
 
-console.log('swiper actif')
+const placeSection = document.querySelector("#place");
+const cloudsContainer = document.querySelector(".clouds-container");
 
-
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const placeSection = document.querySelector("#place");
-
-    const clouds = document.querySelectorAll(
-        "#place .bigCloud, #place .littleCloud"
-    );
-
-    if (!placeSection || clouds.length === 0) {
-        return;
-    }
+if (placeSection && cloudsContainer) {
 
     window.addEventListener("scroll", () => {
 
@@ -74,29 +78,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const translateX = progress * -300;
 
-        clouds.forEach((cloud) => {
-            cloud.style.transform = `translateX(${translateX}px)`;
-        });
+        cloudsContainer.style.transform =
+            `translateX(${translateX}px)`;
 
     });
 
-});
+}
 
-const titles = document.querySelectorAll("h2, h3");
+  /*
+   * Animation des titres au scroll
+   */
+  const titles = document.querySelectorAll("h2, h3");
 
-const titleObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("title-visible");
-      }
+  const titleObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("title-visible");
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  titles.forEach((title) => {
+    titleObserver.observe(title);
+  });
+
+  /*
+   le menu en full page pas oublier les emoji fleur etc
+   */
+  const burger = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-navigation");
+  const menuLinks = document.querySelectorAll(".fullscreen-menu a");
+
+  if (burger && nav) {
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      document.body.classList.toggle("menu-open");
+
+      const isOpen = nav.classList.contains("active");
+      burger.setAttribute("aria-expanded", isOpen);
     });
-  },
-  {
-    threshold: 0.5,
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        document.body.classList.remove("menu-open");
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
   }
-);
-
-titles.forEach((title) => {
-  titleObserver.observe(title);
 });

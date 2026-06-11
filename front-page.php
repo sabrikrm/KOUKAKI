@@ -17,7 +17,7 @@ get_header();
         >
     </div>
 </section>
-        <section id="#story" class="story">
+        <section id="story" class="story">
             <h2>L'histoire</h2>
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
@@ -28,8 +28,10 @@ get_header();
                 <div>
                     <h3>Le Lieu</h3>
                     <p><?php echo get_theme_mod('place'); ?></p>
-                    <img class="bigCloud" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/big_cloud.png" alt="grand nuage">
-<img class="littleCloud" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/little_cloud.png" alt="petit nuage">
+                   <div class="clouds-container">
+          <img class="cloud cloud1" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/big_cloud.png" alt="grand nuage">
+         <img class="cloud cloud2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/little_cloud.png" alt="petit nuage">
+                    </div>
                 </div>
 
             </article>
