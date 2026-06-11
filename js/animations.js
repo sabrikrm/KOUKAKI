@@ -1,29 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const titles = document.querySelectorAll("h2, h3");
-
-  const observer = new IntersectionObserver(function (entries) {
-
-    entries.forEach(function (entry) {
-
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      }
-
-    });
-
-  }, {
-    threshold: 0.3
-  });
-
-  titles.forEach(function (title) {
-
-    title.classList.add("animate-title");
-
-    observer.observe(title);
-
-  });
-
   // Parallaxe hero
   const bannerVideo = document.querySelector(".banner__video");
   const bannerLogoWrapper = document.querySelector(".banner__logo-wrapper");
@@ -67,4 +43,60 @@ console.log('swiper actif')
 
 
 
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const placeSection = document.querySelector("#place");
+
+    const clouds = document.querySelectorAll(
+        "#place .bigCloud, #place .littleCloud"
+    );
+
+    if (!placeSection || clouds.length === 0) {
+        return;
+    }
+
+    window.addEventListener("scroll", () => {
+
+        const sectionTop = placeSection.offsetTop;
+        const sectionHeight = placeSection.offsetHeight;
+
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        const start = sectionTop - windowHeight;
+        const end = sectionTop + sectionHeight;
+
+        let progress = (scrollY - start) / (end - start);
+
+        progress = Math.max(0, Math.min(progress, 1));
+
+        const translateX = progress * -300;
+
+        clouds.forEach((cloud) => {
+            cloud.style.transform = `translateX(${translateX}px)`;
+        });
+
+    });
+
+});
+
+const titles = document.querySelectorAll("h2, h3");
+
+const titleObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("title-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
+
+titles.forEach((title) => {
+  titleObserver.observe(title);
 });
