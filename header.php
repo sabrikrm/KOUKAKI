@@ -42,11 +42,30 @@
 			</button>
 
 			<ul id="primary-menu" class="fullscreen-menu">
-				<li><a href="#story">Histoire</a></li>
-				<li><a href="#characters">Personnages</a></li>
-				<li><a href="#place">Lieu</a></li>
-				<li><a href="#studio">Studio Koukaki</a></li>
-			</ul>
+
+	<img class="menu-cat menu-cat-purple"
+     src="/wp-content/uploads/2022/06/Kawaneko.png"
+     alt="">
+
+<img class="menu-cat menu-cat-orange"
+     src="/wp-content/uploads/2022/06/Orenjiiro-1.png"
+     alt="">
+
+<img class="menu-cat menu-cat-black"
+     src="/wp-content/uploads/2022/06/Jaakuna-1.png"
+     alt="">
+
+<div class="menu-flower menu-flower-1"></div>
+<div class="menu-flower menu-flower-2"></div>
+<div class="menu-flower menu-flower-3"></div>
+
+	<li><a href="#story">Histoire</a></li>
+	<li><a href="#characters">Personnages</a></li>
+	<li><a href="#place">Lieu</a></li>
+	<li><a href="#studio">Studio Koukaki</a></li>
+
+	<p class="menu-footer-text">STUDIO KOUKAKI</p>
+</ul>
 
 		</nav>
 	</header><!-- #masthead -->

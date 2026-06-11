@@ -51,61 +51,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /*
    * Nuages section lieu
-   */
-  /* ==========================
-   NUAGES SECTION LIEU
-========================== */
+    */
 
 const placeSection = document.querySelector("#place");
 const cloudsContainer = document.querySelector(".clouds-container");
 
 if (placeSection && cloudsContainer) {
-
-    window.addEventListener("scroll", () => {
-
-        const sectionTop = placeSection.offsetTop;
-        const sectionHeight = placeSection.offsetHeight;
-
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        const start = sectionTop - windowHeight;
-        const end = sectionTop + sectionHeight;
-
-        let progress = (scrollY - start) / (end - start);
-
-        progress = Math.max(0, Math.min(progress, 1));
-
-        const translateX = progress * -300;
-
-        cloudsContainer.style.transform =
-            `translateX(${translateX}px)`;
-
-    });
-
-}
-
-  /*
-   * Animation des titres au scroll
-   */
-  const titles = document.querySelectorAll("h2, h3");
-
-  const titleObserver = new IntersectionObserver(
+  const cloudObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("title-visible");
+          cloudsContainer.classList.add("clouds-visible");
+        } else {
+          cloudsContainer.classList.remove("clouds-visible");
         }
       });
     },
     {
-      threshold: 0.5,
+      threshold: 0.4,
     }
   );
 
-  titles.forEach((title) => {
-    titleObserver.observe(title);
-  });
+  cloudObserver.observe(placeSection);
+}
+
+  /*
+   * Animation des titres au scroll
+
+ */
+const sectionTitles = document.querySelectorAll(
+  "main h2, main h3"
+);
+
+sectionTitles.forEach((title) => {
+  if (!title.querySelector("span")) {
+    title.innerHTML = `<span>${title.innerHTML}</span>`;
+  }
+});
+
+const titleSpans = document.querySelectorAll(
+  "main h2 span, main h3 span"
+);
+
+const titleObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("title-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
+
+titleSpans.forEach((span) => {
+  titleObserver.observe(span);
+});
 
   /*
    le menu en full page pas oublier les emoji fleur etc
