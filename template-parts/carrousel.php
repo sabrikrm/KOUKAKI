@@ -10,7 +10,7 @@ $characters_query = new WP_Query($args);
 ?>
 
 <article id="characters">
-    <h3>Les personnages</h3>
+    <h3><span>Les personnages</span></h3>
 
     <div class="swiper-container">
         <div class="swiper-wrapper">

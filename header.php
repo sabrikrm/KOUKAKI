@@ -42,22 +42,29 @@
 			</button>
 
 			<ul id="primary-menu" class="fullscreen-menu">
+    
+		<img
+  class="menu-logo"
+  src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png"
+  alt="Fleurs d'oranger et chats errants">
+  
+	  <img class="menu-cat menu-cat-purple"
+       src="/wp-content/uploads/2022/06/Kawaneko.png"
+       alt="chat violet animation menu fullscreen">
 
-	<img class="menu-cat menu-cat-purple"
-     src="/wp-content/uploads/2022/06/Kawaneko.png"
-     alt="">
+     <img class="menu-cat menu-cat-orange"
+      src="/wp-content/uploads/2022/06/Orenjiiro-1.png"
+      alt="">
 
-<img class="menu-cat menu-cat-orange"
-     src="/wp-content/uploads/2022/06/Orenjiiro-1.png"
-     alt="">
+     <img class="menu-cat menu-cat-black"
+      src="/wp-content/uploads/2022/06/Jaakuna-1.png"
+      alt="">
 
-<img class="menu-cat menu-cat-black"
-     src="/wp-content/uploads/2022/06/Jaakuna-1.png"
-     alt="">
-
-<div class="menu-flower menu-flower-1"></div>
+      <div class="menu-flower menu-flower-1"></div>
 <div class="menu-flower menu-flower-2"></div>
 <div class="menu-flower menu-flower-3"></div>
+<div class="menu-flower menu-flower-4"></div>
+<div class="menu-flower menu-flower-5"></div>
 
 	<li><a href="#story">Histoire</a></li>
 	<li><a href="#characters">Personnages</a></li>

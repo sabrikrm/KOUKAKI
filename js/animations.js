@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   /*
-   * Parallaxe Hero
+   * Parallaxe banner
    */
   const bannerVideo = document.querySelector(".banner__video");
   const bannerLogoWrapper = document.querySelector(".banner__logo-wrapper");
@@ -49,89 +49,61 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /*
-   * Nuages section lieu
-    */
+
+
+
+  /* Nuages section lieu */
 
 const placeSection = document.querySelector("#place");
 const cloudsContainer = document.querySelector(".clouds-container");
 
 if (placeSection && cloudsContainer) {
-  const cloudObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          cloudsContainer.classList.add("clouds-visible");
-        } else {
-          cloudsContainer.classList.remove("clouds-visible");
-        }
-      });
-    },
-    {
-      threshold: 0.4,
-    }
-  );
+  window.addEventListener("scroll", () => {
+    const rect = placeSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-  cloudObserver.observe(placeSection);
+    let progress = (windowHeight - rect.top) / windowHeight;
+    progress = Math.max(0, Math.min(progress, 1));
+
+    const translateX = progress * -300;
+
+    cloudsContainer.style.transform = `translateX(${translateX}px)`;
+  });
 }
 
   /*
    * Animation des titres au scroll
 
  */
-const sectionTitles = document.querySelectorAll(
-  "main h2, main h3"
-);
-
-sectionTitles.forEach((title) => {
-  if (!title.querySelector("span")) {
-    title.innerHTML = `<span>${title.innerHTML}</span>`;
-  }
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("title-visible");
+    }
+  });
 });
 
-const titleSpans = document.querySelectorAll(
-  "main h2 span, main h3 span"
-);
+document
+.querySelectorAll("h2 span, h3 span")
+.forEach(title => observer.observe(title));
 
-const titleObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("title-visible");
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-  }
-);
-
-titleSpans.forEach((span) => {
-  titleObserver.observe(span);
-});
 
   /*
-   le menu en full page pas oublier les emoji fleur etc
+   le menu en full page pas oublier emoji fleur etc
    */
-  const burger = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".main-navigation");
-  const menuLinks = document.querySelectorAll(".fullscreen-menu a");
+ const burger = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".main-navigation");
 
-  if (burger && nav) {
-    burger.addEventListener("click", () => {
-      nav.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
+burger.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  document.body.classList.toggle("menu-open"); /*overflow hidden */
+});
 
-      const isOpen = nav.classList.contains("active");
-      burger.setAttribute("aria-expanded", isOpen);
-    });
-
-    menuLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("active");
-        document.body.classList.remove("menu-open");
-        burger.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+document.querySelectorAll(".fullscreen-menu a")
+.forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+    document.body.classList.remove("menu-open");
+  });
+});
 });

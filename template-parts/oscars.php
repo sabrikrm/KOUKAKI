@@ -1,10 +1,10 @@
 <section class="oscars">
     <div class="oscars__container">
-        <h2 class="oscars__title">
+        <h2 class="oscars__title"><span>
             Fleurs d’oranger & chats errants<br>
             est nominé aux Oscars Short<br>
             Film Animated de 2022 !
-        </h2>
+        </span></h2>
 
         <img
             class="oscars__image"
