@@ -44,9 +44,9 @@
 			<ul id="primary-menu" class="fullscreen-menu">
     
 		<img
-  class="menu-logo"
-  src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png"
-  alt="Fleurs d'oranger et chats errants">
+   class="menu-logo"
+   src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png"
+   alt="logo du site">
   
 	  <img class="menu-cat menu-cat-purple"
        src="/wp-content/uploads/2022/06/Kawaneko.png"

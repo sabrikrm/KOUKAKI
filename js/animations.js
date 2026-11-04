@@ -82,7 +82,7 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 });
-
+/*precision de des title*/
 document
 .querySelectorAll("h2 span, h3 span")
 .forEach(title => observer.observe(title));
@@ -94,16 +94,19 @@ document
  const burger = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-navigation");
 
-burger.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  document.body.classList.toggle("menu-open"); /*overflow hidden */
-});
-
-document.querySelectorAll(".fullscreen-menu a")
-.forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-    document.body.classList.remove("menu-open");
+if (burger && nav) {
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+    document.body.classList.toggle("menu-open");
   });
-});
+
+  document.querySelectorAll(".fullscreen-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      burger.classList.remove("active");
+      nav.classList.remove("active");
+      document.body.classList.remove("menu-open");
+    });
+  });
+}
 });

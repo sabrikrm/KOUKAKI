@@ -247,7 +247,7 @@ h3 span.title-visible {
   position: fixed;
   top: 25px;
   right: 40px;
-  z-index: 10002;
+  z-index: 10;
   width: 40px;
   height: 30px;
   padding: 0;
@@ -263,7 +263,7 @@ h3 span.title-visible {
   display: block;
   width: 40px;
   height: 3px;
-  background: black !important;
+  background: black ;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -296,6 +296,7 @@ h3 span.title-visible {
   margin: 0;
   padding: 0;
   opacity: 0;
+  gap: 10px;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -309,15 +310,15 @@ h3 span.title-visible {
 
 .fullscreen-menu li {
   position: relative;
-  z-index: 20;
-  margin: 22px 0;
+  z-index: 10;
+  margin: -100px;
   text-align: center;
   float: none;
   display: block;
 }
 
 .fullscreen-menu li:first-of-type {
-  margin-top: 155px;
+  
 }
 
 .fullscreen-menu a {
@@ -347,7 +348,7 @@ body.menu-open {
 /* Logo du menu */
 .menu-logo {
   position: absolute;
-  top: 38px;
+top: 10px;
   left: 50%;
   transform: translateX(-50%);
   width: 145px;
@@ -445,7 +446,7 @@ body.menu-open {
   width: 626px;
   height: 626px;
   right: -310px;
-  bottom: -370px;
+  bottom: -260px;
   left: auto;
   top: auto;
   background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
@@ -481,7 +482,7 @@ article {
     width: 80%;
   }
   .fullscreen-menu li {
-    margin: 16px 0;
+    margin: 100px;
   }
   .fullscreen-menu li:first-of-type {
     margin-top: 130px;
@@ -532,6 +533,19 @@ article {
   .menu-footer-text {
     bottom: 25px;
     font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fullscreen-menu {
+    display: flex;
+    
+  }
+
+  .main-navigation.active .fullscreen-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
 

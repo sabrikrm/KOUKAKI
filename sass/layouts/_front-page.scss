@@ -4,6 +4,8 @@ Template: foce
 Version: 0.1
 */
 
+/* Apparition des sections */
+
 .banner,
 .story,
 #studio,
@@ -18,26 +20,21 @@ Version: 0.1
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-h2,
-h3 {
-  opacity: 1;
-  transform: none;
-}
-
-/* fade in titre */
+/* Apparition des titres */
 
 h2 span,
 h3 span {
   display: inline-block;
   opacity: 0;
   transform: translateY(80px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: 1s ease;
 }
 
 h2 span.title-visible,
@@ -46,7 +43,7 @@ h3 span.title-visible {
   transform: translateY(0);
 }
 
-/* rotation fleurs */
+/* Rotation des fleurs */
 
 .story h2::after,
 .story__article::after,
@@ -54,7 +51,8 @@ h3 span.title-visible {
 #studio h2::after,
 .site-footer::before,
 .site-footer::after,
-.site-footer ul::after {
+.site-footer ul::after,
+.menu-flower {
   animation: rotateFlower 10s linear infinite;
   transform-origin: center;
 }
@@ -68,9 +66,6 @@ h3 span.title-visible {
 }
 
 @keyframes rotateFlower {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
   }
@@ -84,25 +79,24 @@ h3 span.title-visible {
 }
 
 .oscars__container {
-  margin: 0 auto;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 40px;
+  margin: auto;
 }
 
 .oscars__title {
-  font-size: 32px;
-  color: white;
-  background-image: url("assets/images/oscar_orange_bg.png");
-  padding: 50px;
-  border-radius: 20px;
   margin: 0;
+  padding: 50px;
+  color: white;
+  font-size: 32px;
+  border-radius: 20px;
+  background-image: url("assets/images/oscar_orange_bg.png");
 }
 
 .oscars__image {
   max-width: 280px;
-  height: auto;
 }
 
 /* Hero vidéo */
@@ -113,9 +107,7 @@ h3 span.title-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/wp-content/themes/foce/assets/images/banner.png");
-  background-size: cover;
-  background-position: center;
+  background: url("/wp-content/themes/foce/assets/images/banner.png") center / cover;
 }
 
 .banner__video {
@@ -133,24 +125,15 @@ h3 span.title-visible {
 }
 
 .banner .banner__logo {
+  display: block;
   width: 100%;
   max-width: 100%;
-  height: auto;
-  margin-top: 0;
-  display: block;
   animation: floatTitle 3s ease-in-out infinite;
-  top: 15px;
 }
 
 @keyframes floatTitle {
-  0% {
-    transform: translateY(0);
-  }
   50% {
     transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 
@@ -167,21 +150,19 @@ h3 span.title-visible {
 }
 
 #characters h3 {
+  padding: 1em;
   text-align: left;
   background-position: left;
-  padding: 1em;
 }
 
 /* Lieu */
 
 .story #place {
-  display: flex;
-  background-image: url("./assets/images/Studio_Koukaki-image_place.png");
-  width: 100%;
-  background-size: cover;
-  background-position: center;
   position: relative;
   overflow: hidden;
+  display: flex;
+  width: 100%;
+  background: url("./assets/images/Studio_Koukaki-image_place.png") center / cover;
 }
 
 #place h3,
@@ -200,76 +181,73 @@ h3 span.title-visible {
 }
 
 .cloud {
-  display: block;
   position: absolute;
+  display: block;
   filter: blur(10px);
   pointer-events: none;
 }
 
 .cloud1 {
   width: 316px;
-  height: 122px;
 }
 
 .cloud2 {
   top: 190px;
   left: -180px;
   width: 142px;
-  height: 55px;
 }
 
-/* Header + menu burger */
+/* Header */
 
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
   width: 100%;
   height: 80px;
   background: #fff5e9;
-  z-index: 9999;
-  overflow: visible;
 }
 
 .main-navigation {
   position: relative;
-  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80px;
 }
 
 .site-title {
-  position: relative;
   z-index: 10001;
   color: black;
-  text-decoration: none;
   font-size: 21px;
   font-weight: 700;
+  text-decoration: none;
 }
+
+/* Bouton burger */
 
 .menu-toggle {
   position: fixed;
   top: 25px;
   right: 40px;
   z-index: 10002;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
   width: 40px;
   height: 30px;
   padding: 0;
   background: transparent !important;
-  border: none;
-  display: flex !important;
-  flex-direction: column;
-  justify-content: space-between;
+  border: 0;
   cursor: pointer;
 }
 
 .menu-toggle .line {
-  display: block;
   width: 40px;
   height: 3px;
   background: black !important;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .menu-toggle.active .line:nth-child(1) {
@@ -289,26 +267,20 @@ h3 span.title-visible {
 .fullscreen-menu {
   position: fixed;
   top: 80px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 80px);
-  background: #fff5e9;
-  z-index: 10000;
-
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-
-  list-style: none;
+  width: 100%;
+  height: calc(100vh - 80px);
   margin: 0;
   padding: 0;
-
+  list-style: none;
+  background: #fff5e9;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .main-navigation.active .fullscreen-menu {
@@ -318,12 +290,9 @@ h3 span.title-visible {
 }
 
 .fullscreen-menu li {
-  position: relative;
   z-index: 20;
-  margin: 22px 0;
+  margin: 50px 0;
   text-align: center;
-  float: none;
-  display: block;
 }
 
 .fullscreen-menu li:first-of-type {
@@ -331,22 +300,15 @@ h3 span.title-visible {
 }
 
 .fullscreen-menu a {
-  position: relative;
-  z-index: 21;
   display: block;
-  width: auto;
   color: black;
-  text-decoration: none;
   font-family: "Space Mono", monospace;
-  font-size: 3.6rem;
-  line-height: 1.15;
-  pointer-events: auto;
-  cursor: pointer;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-size: 64px;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
 .fullscreen-menu a:hover {
-  color: black;
   text-shadow: 0 0 12px #ff5c00;
 }
 
@@ -354,21 +316,9 @@ body.menu-open {
   overflow: hidden;
 }
 
-/* Logo du menu */
+/* Décorations du menu */
 
-.menu-logo {
-  position: absolute;
-  top: 38px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 145px;
-  height: auto;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Décorations menu */
-
+.menu-logo,
 .menu-cat,
 .menu-flower,
 .menu-footer-text {
@@ -376,10 +326,16 @@ body.menu-open {
   pointer-events: none;
 }
 
+.menu-logo {
+  top: 38px;
+  left: 50%;
+  z-index: 2;
+  width: 145px;
+}
+
 .menu-cat {
-  width: 110px;
-  height: auto;
   z-index: 1;
+  width: 110px;
   animation: floatMenuCat 4s ease-in-out infinite;
 }
 
@@ -401,79 +357,67 @@ body.menu-open {
 }
 
 @keyframes floatMenuCat {
-  0% {
-    transform: translateY(0);
-  }
   50% {
     transform: translateY(-18px);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 
 .menu-flower {
   z-index: 1;
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center;
-  animation: rotateFlower 15s linear infinite;
+  background-size: contain;
 }
 
 .menu-flower-1 {
+  top: 420px;
+  left: 15%;
   width: 70px;
   height: 70px;
-  left: 15%;
-  top: 420px;
   background-image: url("/wp-content/themes/foce/assets/images/flower.png");
 }
 
 .menu-flower-2 {
+  top: 300px;
+  right: -25px;
   width: 76px;
   height: 76px;
-  right: -25px;
-  top: 300px;
   background-image: url("/wp-content/themes/foce/assets/images/random_flower.png");
 }
 
 .menu-flower-3 {
+  top: 90px;
+  left: -55px;
   width: 170px;
   height: 170px;
-  left: -55px;
-  top: 90px;
   background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
 }
 
 .menu-flower-4 {
+  top: 115px;
+  right: 18%;
   width: 216px;
   height: 216px;
-  right: 18%;
-  top: 115px;
-  left: auto;
-  bottom: auto;
   background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
 }
 
 .menu-flower-5 {
+  right: -310px;
+  bottom: -260px;
   width: 626px;
   height: 626px;
-  right: -310px;
-  bottom: -370px;
-  left: auto;
-  top: auto;
   background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
 }
 
 .menu-footer-text {
+  left: 50%;
   top: 85%;
-  bottom: 35px;
-  transform: translateX(-50%);
   z-index: 2;
+  color: black;
   font-family: "Space Mono", monospace;
   font-size: 12px;
   letter-spacing: 4px;
-  color: black;
-  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Ancres */
@@ -490,10 +434,6 @@ article {
     display: none;
   }
 
-  .banner {
-    background-position: center center;
-  }
-
   .banner__logo {
     width: 80%;
   }
@@ -508,7 +448,6 @@ article {
 
   .fullscreen-menu a {
     font-size: 2.4rem;
-    line-height: 1.15;
   }
 
   .menu-logo {
@@ -561,8 +500,6 @@ article {
   }
 
   .menu-footer-text {
-    bottom: 25px;
     font-size: 10px;
   }
 }
-
