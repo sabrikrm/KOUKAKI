@@ -91,22 +91,31 @@ document
   /*
    le menu en full page pas oublier emoji fleur etc
    */
- const burger = document.querySelector(".menu-toggle");
+const burger = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-navigation");
 
 if (burger && nav) {
+  function setMenuOpen(isOpen) {
+    burger.classList.toggle("active", isOpen);
+    nav.classList.toggle("active", isOpen);
+    document.body.classList.toggle("menu-open", isOpen);
+    burger.setAttribute("aria-expanded", String(isOpen));
+    burger.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+  }
+
   burger.addEventListener("click", () => {
-    burger.classList.toggle("active");
-    nav.classList.toggle("active");
-    document.body.classList.toggle("menu-open");
+    setMenuOpen(!nav.classList.contains("active"));
   });
 
   document.querySelectorAll(".fullscreen-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-      burger.classList.remove("active");
-      nav.classList.remove("active");
-      document.body.classList.remove("menu-open");
-    });
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && nav.classList.contains("active")) {
+      setMenuOpen(false);
+      burger.focus();
+    }
   });
 }
 });

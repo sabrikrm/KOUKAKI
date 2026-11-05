@@ -6,7 +6,7 @@ function theme_enqueue_styles() {
         'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array('parent-style'),
-        '1.0'
+        filemtime(get_stylesheet_directory() . '/style.css')
     );
     
 }
@@ -45,7 +45,7 @@ function foce_child_enqueue_scripts() {
         'foce-child-animations',
         get_stylesheet_directory_uri() . '/js/animations.js',
         array('swiper-js'),
-        '1.0',
+        filemtime(get_stylesheet_directory() . '/js/animations.js'),
         true
     );
 }
@@ -54,3 +54,8 @@ add_action(
     'wp_enqueue_scripts',
     'foce_child_enqueue_scripts'
 );
+// Le menu personnalise remplace navigation script du theme parent
+function foce_child_remove_parent_navigation() {
+    wp_dequeue_script('foce-navigation');
+}
+add_action('wp_enqueue_scripts', 'foce_child_remove_parent_navigation', 20);
